@@ -1,6 +1,9 @@
 import scala.io.Source;
 
-class day2 {
+/**
+ * Calculate ship's position using some formula.
+ */
+class day02 {
 
     def part1helper(t: (String, Int)): (Int, Int) = t match {
         case ("forward", n) => (n, 0)
@@ -35,7 +38,7 @@ class day2 {
     }
 
     def run(): Unit = {
-        val input = Source.fromFile("src/main/resources/day2.txt").mkString.linesIterator.map(_.split(" ")).map(x => (x(0), x(1).toInt)).toList
+        val input = Source.fromFile("src/main/resources/day02.txt").mkString.linesIterator.map(_.split(" ")).map(x => (x(0), x(1).toInt)).toList
         println("Part 1 is: " + part1(input))
         println("Part 2 is: " + part2(input))
     }

@@ -1,6 +1,9 @@
 import scala.io.Source
 
-class day3 {
+/**
+ * Calculate oxygen and carbon dioxide on some binary input using most and least frequent column wise to determine a binary number.
+ */
+class day03 {
 
     // Doesn't always work. 3847100
     def part1(xs: List[String]): Long = {
@@ -55,7 +58,7 @@ class day3 {
     def frequencyMap(xs:List[String]): Map[Int, Int] = xs.flatMap(x => x.toCharArray.zipWithIndex).filter(x => x._1 == '1').groupBy(_._2).map(x => (x._1, x._2.foldLeft(0)((y, _) => y + 1)))
 
     def run(): Unit = {
-        val input = Source.fromFile("src/main/resources/day3.txt").mkString.linesIterator.toList
+        val input = Source.fromFile("src/main/resources/day03.txt").mkString.linesIterator.toList
         println("Part 1 is: " + part1(input))
         println("Part 2 is: " + part2(input))
     }

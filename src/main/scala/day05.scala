@@ -1,9 +1,9 @@
 import scala.io.Source
 
 /**
- * Find intersection of lines. Gave up on fp here. Sometimes having a mutable data structure can prevent me from pulling hear out of my head.
+ * Find intersection of lines. Gave up on fp here. Sometimes having a mutable data structure can prevent me from pulling hair out of my head.
  */
-class day5 {
+class day05 {
 
     type Point = (Int, Int)
     type Line = (Point, Point)
@@ -18,7 +18,7 @@ class day5 {
         ((t(0).head._1, t(0).head._2), (t(1).head._1, t(1).head._2))
     }
 
-    val input: List[Line] = Source.fromFile("src/main/resources/day5.txt").mkString.replace(" ", "").split("\n").map(stringToLine).toList
+    val input: List[Line] = Source.fromFile("src/main/resources/day05.txt").mkString.replace(" ", "").split("\n").map(stringToLine).toList
 
     val inputPart1: List[Line] = input.filter((x: Line) => (x._1._1 == x._2._1 || x._1._2 == x._2._2))
 
@@ -72,5 +72,4 @@ class day5 {
         println("Part 1: " + part1(inputPart1))
         println("Part 2: " + part2(input))
     }
-
 }

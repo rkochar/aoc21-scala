@@ -1,10 +1,13 @@
 import scala.io.Source
 
-class day4 {
+/**
+ * Solve bingo.
+ */
+class day04 {
 
     type Board = List[List[Int]]
 
-    val input: List[String] = Source.fromFile("src/main/resources/day4.txt").mkString.split("\n").toList
+    val input: List[String] = Source.fromFile("src/main/resources/day04.txt").mkString.split("\n").toList
 
     val strikes: List[Int] = input.head.split(",").map(_.toInt).toList
 
@@ -38,7 +41,7 @@ class day4 {
             println(v)
             v
         }
-        else                                               checkRows(board, index + 1, strikes)
+        else checkRows(board, index + 1, strikes)
     }
 
     def checkBoardsPart2(boards: List[Board], i: Int): List[Board] = boards match {
@@ -69,6 +72,4 @@ class day4 {
         println("Part 1: " + part1(1)) // Print correct answer but does not return correct answer.
         println("Part 2: " + part2(1, boards)) // Doesn't work
     }
-
-
 }
