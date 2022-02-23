@@ -29,7 +29,7 @@ class day06 {
     }
 
     def part2(input: List[Int]): Long = {
-        var xs: Array[Long] = Array.ofDim[Long](9)
+        val xs: Array[Long] = Array.ofDim[Long](9)
         val inputMap = input.groupBy(x => x).map(x => (x._1, x._2.length)).foreach(x => xs(x._1) = x._2)
 
         @tailrec

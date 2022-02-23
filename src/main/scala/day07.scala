@@ -5,14 +5,14 @@ import scala.io.Source
  */
 class day07 {
 
-    val input = Source.fromFile("src/main/resources/day07.txt").mkString.split(",").map(_.toInt).toList
+    val input: List[Int] = Source.fromFile("src/main/resources/day07.txt").mkString.split(",").map(_.toInt).toList
 
     def part1(xs: List[Int]): Int = {
         val median: Int = findMedian(xs)
         Integer.min(distance(xs, median), distance(xs, median + 1))
     }
 
-    def distance(xs: List[Int], point: Int) = xs.map(x => Math.abs(x - point)).sum
+    def distance(xs: List[Int], point: Int): Int = xs.map(x => Math.abs(x - point)).sum
 
     def findMedian(s: List[Int]): Int  = {
         val (lower, upper) = s.sortWith(_ < _).splitAt(s.size / 2)
@@ -21,12 +21,10 @@ class day07 {
 
     def part2(xs: List[Int]): Int = {
         val mean: Int = (xs.sum / xs.length)
-        val a = cumulativeDistance(xs, mean)
-        val b = cumulativeDistance(xs, mean + 1)
-        Integer.min(a, b)
+        Integer.min(cumulativeDistance(xs, mean), cumulativeDistance(xs, mean + 1))
     }
 
-    def cumulativeDistance(xs: List[Int], point: Int) = xs.map(x => {
+    def cumulativeDistance(xs: List[Int], point: Int): Int = xs.map(x => {
         val distance = Math.abs(x - point)
         distance * (distance + 1) / 2
     }).sum
