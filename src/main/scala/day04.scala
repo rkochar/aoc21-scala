@@ -116,8 +116,7 @@ class day04 {
     }
 
     def run(): Unit = {
-        //        println("Part 1: " + part1(1)) // Prints correct answer but does not it. Very strange!!!
-        //        println("Part 2: " + part2(1, boards)) // Doesn't work
+        println("Part 1: " + part1(1)) // Prints correct answer but does not it. Very strange!!!
         println("Part 2: " + part2iterative(strikes))
     }
 
