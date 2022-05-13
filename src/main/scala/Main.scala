@@ -1,3 +1,4 @@
 object Main extends App {
-    new day09().run()
+
+    new day14().run()
 }
