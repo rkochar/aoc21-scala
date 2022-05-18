@@ -22,8 +22,6 @@ class day10 {
     def reduceToClosingBracket(ch: List[Char]): Char = {
         if  (closingBrackets.contains(ch.head)) ch.head
         else                                    reduceToClosingBracket(ch.tail)
-        // 1860 266 033  -> IVR
-        // 1800 202 6161 -> Credit
     }
 
     def completeBrackets(chars: List[Char]): Long = {
