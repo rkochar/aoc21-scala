@@ -78,7 +78,7 @@ class NodeDay15(xy: (Int, Int), originalCost: Long) {
     var id: (Int, Int) = xy
     var cost                = originalCost
     var distance: Long      = Long.MaxValue
-//    var previous: String    = "None"
+    //    var previous: String    = "None"
     var visited: Boolean    = false
 
     def getId(): (Int, Int) = id
