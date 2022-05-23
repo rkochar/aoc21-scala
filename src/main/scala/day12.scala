@@ -6,13 +6,13 @@ class day12 {
         val input = Source.fromFile("src/main/resources/day12example.txt").mkString.split("\n")
         val nodeNames = input.flatMap(_.split('-')).distinct
         val l = nodeNames.length
-        var nodes = new Array[Node](l + 2)
-        nodes(1) = new Node(1, "start", false)
-        nodes(l + 1) = new Node(l + 1, "end", false)
+        var nodes = new Array[NodeDay12](l + 2)
+        nodes(1) = new NodeDay12(1, "start", false)
+        nodes(l + 1) = new NodeDay12(l + 1, "end", false)
         for (i <- Range(2, l, 1)) {
             val name: String = nodeNames(i - 1)
             val small: Boolean = name.toCharArray.forall(_ >= 97)
-            if (name != "start" || name != "end") nodes(i) = new Node(i, name, small)
+            if (name != "start" || name != "end") nodes(i) = new NodeDay12(i, name, small)
         }
         for (edge <- input) {
             val e = edge.split('-')
@@ -24,7 +24,7 @@ class day12 {
     }
 }
 
-class Node(newId: Int, newName: String, small: Boolean) {
+class NodeDay12(newId: Int, newName: String, small: Boolean) {
     val id      = newId
     val name    = newName
     val isSmall = small

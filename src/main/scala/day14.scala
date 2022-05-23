@@ -1,6 +1,9 @@
 import scala.collection.mutable
 import scala.io.Source
 
+// Calculate polymers by adding characters to a word.
+// Why is part 2 broken?
+
 class day14 {
 
     var hashMap = new mutable.HashMap[String, List[String]]()
@@ -16,13 +19,10 @@ class day14 {
         var newCounter = new mutable.HashMap[String, Long]()
         for (c <- counter) {
             if (c._2 > 0) {
-                letters(hashMap(c._1)(0).charAt(0)) += 1l
-                letters(hashMap(c._1)(0).charAt(1)) += 2l
-                letters(hashMap(c._1)(1).charAt(1)) += 1l
                 for (hm <- hashMap(c._1))
                     newCounter.get(hm) match {
-                        case Some(_) => newCounter(hm) += 1l
-                        case None    => newCounter = newCounter + (hm -> 1l)
+                        case Some(_) => newCounter(hm) += c._2
+                        case None    => newCounter = newCounter + (hm -> c._2)
                     }
             }
         }
@@ -43,6 +43,10 @@ class day14 {
     def calculateLetters(word: String): Long = {
         letters(word.charAt(0)) += 1l
         letters(word.charAt(word.length - 1)) += 1l
+        for (c <- counter) {
+            letters(c._1.charAt(0)) += c._2
+            letters(c._1.charAt(1)) += c._2
+        }
         for (l <- letters.keys)
             letters(l) /= 2
         println(letters)
@@ -58,17 +62,18 @@ class day14 {
 
     def run(): Unit = {
         val parts = Source.fromFile("src/main/resources/day14example.txt").mkString.split("\n\n").toList
+        val word = parts.head.strip()
         val rules = parts(1).split("\n").map(parseRule).toList
         for (r <- rules.flatMap(_._2).distinct)
             letters = letters + (r.charAt(0) -> 0L)
         for (r <- rules)
             hashMap = hashMap + (r._1 -> r._2)
         for (x <- (hashMap.values.toList.flatten ++ hashMap.keys).distinct)
-            counter = counter + (x -> 0)
-        for (w <- generateRules(parts.head.strip().toCharArray.toList))
+            counter = counter + (x -> 0l)
+        for (w <- generateRules(word.toCharArray.toList))
             counter(w) += 1
 
-        println(part1(0, 10, parts.head.strip()))
-//        println(part2(input))
+        println(part1(0, 10, word))
+        println(part1(0, 40, word))
     }
 }

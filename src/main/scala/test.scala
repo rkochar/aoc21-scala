@@ -2,11 +2,16 @@ import scala.io.Source
 
 class test {
 
-    def count(yActual: List[Int], yPred: List[Int]): Double = yActual.zip(yPred).count(x => x._1 == x._2)
-
     def run(): Unit = {
-        val yActual: List[Int] = Source.fromFile("src/main/resources/solution.txt").mkString.split("\n").map(_.toInt).toList
-        val yPredicted = Source.fromFile("src/main/resources/Group_44_classes.txt").mkString.split(",").map(_.toInt).toList
-        println((count(yActual, yPredicted) / yActual.length): Double)
+        val input = Source.fromFile("src/main/resources/grades.txt").mkString.split("\n").map(_.toFloat).sum
+        println(input)
+        println("cs : " + (5 * input / 145))
+        val rob = (8.5 + 7 + 8 + 8 + 8 + 6) // (4 * 8.5 + 2 * 7 + 15 * 8 + 3 * 6) / 24
+        println("all: " + (5 * (input + rob) / 169))
     }
 }
+
+//6.0
+//8.5
+//7.0
+//8.0
