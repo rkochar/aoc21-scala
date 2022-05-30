@@ -1,7 +1,7 @@
 import scala.io.Source
 
 class day12 {
-    // TOOD: Sudoku style ordered recursion while marking and unmarking caves.
+    // TOOD: NQuuen style ordered recursion while marking and unmarking caves.
     def run(): Unit = {
         val input = Source.fromFile("src/main/resources/day12example.txt").mkString.split("\n")
         val nodeNames = input.flatMap(_.split('-')).distinct
