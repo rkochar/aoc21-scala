@@ -50,7 +50,7 @@ class day08 {
             .map(x => (x(0).trim.split(" ").toList.map(x => (x, x.length)), x(1).trim.split(" ").toList.map(x => (x, x.length))))
             .toList
 
-//        println(part1(input))
+        println(part1(input))
         println(part2(input))
     }
 }

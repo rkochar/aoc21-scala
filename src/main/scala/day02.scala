@@ -1,7 +1,7 @@
 import scala.io.Source;
 
 /**
- * Calculate ship's position using some formula.
+ * Calculate ship's position using a function.
  */
 class day02 {
 

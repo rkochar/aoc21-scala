@@ -2,7 +2,7 @@ import scala.collection.mutable
 import scala.io.Source
 
 // Calculate polymers by adding characters to a word.
-// Why is part 2 broken?
+// Part 2 has a bug even though same code as part 1.
 
 class day14 {
 
